@@ -12,6 +12,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import {
+  Building2Icon,
   GalleryVerticalEndIcon,
   LayoutDashboardIcon,
   TagsIcon,
@@ -33,6 +34,11 @@ const data = {
       title: "Categories",
       url: "/dashboard/categories",
       icon: <TagsIcon />,
+    },
+    {
+      title: "Accounts",
+      url: "/dashboard/accounts",
+      icon: <Building2Icon />,
     },
   ],
 }
