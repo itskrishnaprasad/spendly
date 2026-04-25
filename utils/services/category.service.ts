@@ -44,9 +44,23 @@ function handleDatabaseError(error: PostgrestError): ServiceError {
     }
   }
 
+  if (error.code === "23503") {
+    return {
+      status: 409,
+      message: "This category is in use and cannot be removed.",
+    }
+  }
+
+  if (error.code === "42703") {
+    return {
+      status: 500,
+      message: "Category schema mismatch. Please contact support.",
+    }
+  }
+
   return {
     status: 500,
-    message: "An unexpected database error occurred.",
+    message: error.message || "An unexpected database error occurred.",
   }
 }
 
@@ -92,27 +106,24 @@ async function findCategoryByName(
   }
 }
 
-export async function getCategories(
+export async function getCategoriesByType(
   supabase: SupabaseClient,
   userId: UUID,
-  options?: { type?: TransactionType }
+  type: TransactionType
 ): Promise<ServiceResult<Category[]>> {
-  let defaultQuery = supabase
+  const defaultQuery = supabase
     .from("categories")
     .select("*")
     .is("user_id", null)
+    .eq("type", type)
     .eq("is_default", true)
 
-  let customQuery = supabase
+  const customQuery = supabase
     .from("categories")
     .select("*")
     .eq("user_id", userId)
+    .eq("type", type)
     .eq("is_default", false)
-
-  if (options?.type) {
-    defaultQuery = defaultQuery.eq("type", options.type)
-    customQuery = customQuery.eq("type", options.type)
-  }
 
   const [
     { data: defaultCategories, error: defaultError },
@@ -271,7 +282,6 @@ export async function updateCategory(
 
   const updates: Record<string, unknown> = {
     ...payload,
-    updated_at: new Date().toISOString(),
   }
 
   if (payload.name) {

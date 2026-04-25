@@ -15,7 +15,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <main className="mx-auto flex min-h-svh w-full max-w-5xl flex-col gap-4 p-6 md:p-10">
+    <main className="flex w-full flex-col gap-4">
       <div className="flex items-center justify-between gap-4">
         <h1 className="text-2xl font-semibold tracking-tight">Dashboard</h1>
         <form action={signOut}>

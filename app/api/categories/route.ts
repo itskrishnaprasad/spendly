@@ -7,7 +7,7 @@ import {
 } from "@/utils/responses/api-response"
 import {
   createCategory,
-  getCategories,
+  getCategoriesByType,
 } from "@/utils/services/category.service"
 import {
   createCategorySchema,
@@ -25,16 +25,12 @@ export async function GET(request: NextRequest) {
   const typeRaw = request.nextUrl.searchParams.get("type")
 
   if (!typeRaw) {
-    const result = await getCategories(auth.supabase, auth.user.id)
-
-    if (!result.success) {
-      return errorResponse(result.error.message, {
-        status: result.error.status,
-        errors: result.error.errors,
-      })
-    }
-
-    return successResponse(result.data)
+    return errorResponse("Query parameter 'type' is required.", {
+      status: 400,
+      errors: {
+        type: ["Expected one of: income, expense."],
+      },
+    })
   }
 
   const parsedType = transactionTypeSchema.safeParse(typeRaw)
@@ -43,9 +39,11 @@ export async function GET(request: NextRequest) {
     return validationErrorResponse(parsedType.error)
   }
 
-  const result = await getCategories(auth.supabase, auth.user.id, {
-    type: parsedType.data,
-  })
+  const result = await getCategoriesByType(
+    auth.supabase,
+    auth.user.id,
+    parsedType.data
+  )
 
   if (!result.success) {
     return errorResponse(result.error.message, {
