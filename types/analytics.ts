@@ -1,4 +1,4 @@
-export interface DashboardSummary {
+export * from "@/types/dashboard"export interface DashboardSummary {
   total_balance: number
   total_income: number
   total_expense: number

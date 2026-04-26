@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useSyncExternalStore } from "react"
 import { MoonIcon, SunIcon } from "lucide-react"
 import { useTheme } from "next-themes"
 
@@ -8,11 +8,11 @@ import { Button } from "@/components/ui/button"
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  )
 
   if (!mounted) {
     return null
@@ -21,29 +21,15 @@ export function ThemeToggle() {
   const isDark = resolvedTheme === "dark"
 
   return (
-    <div className="inline-flex items-center rounded-md border bg-background p-1 shadow-sm">
-      <Button
-        type="button"
-        variant={isDark ? "ghost" : "secondary"}
-        size="icon-sm"
-        className="rounded-sm"
-        onClick={() => setTheme("light")}
-        aria-label="Switch to light theme"
-        aria-pressed={!isDark}
-      >
-        <SunIcon />
-      </Button>
-      <Button
-        type="button"
-        variant={isDark ? "secondary" : "ghost"}
-        size="icon-sm"
-        className="rounded-sm"
-        onClick={() => setTheme("dark")}
-        aria-label="Switch to dark theme"
-        aria-pressed={isDark}
-      >
-        <MoonIcon />
-      </Button>
-    </div>
+    <Button
+      type="button"
+      variant="outline"
+      size="icon-sm"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      aria-pressed={isDark}
+    >
+      {isDark ? <SunIcon /> : <MoonIcon />}
+    </Button>
   )
 }

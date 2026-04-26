@@ -1,0 +1,145 @@
+import { ArrowDownRightIcon, ArrowUpRightIcon } from "lucide-react"
+
+import type { DashboardRecentTransaction } from "@/types/dashboard"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+import { formatCurrency, formatDate } from "./dashboard-utils"
+
+type RecentTransactionsProps = {
+  data: DashboardRecentTransaction[] | null
+  loading: boolean
+  error: string | null
+}
+
+function RecentTransactionsSkeleton() {
+  return (
+    <Card className="border-border/60 shadow-xs">
+      <CardHeader>
+        <Skeleton className="h-4 w-36" />
+        <Skeleton className="h-4 w-60" />
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-3">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <Skeleton key={index} className="h-12 w-full rounded-xl" />
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+export function RecentTransactions({ data, loading, error }: RecentTransactionsProps) {
+  if (loading) {
+    return <RecentTransactionsSkeleton />
+  }
+
+  if (error) {
+    return (
+      <Card className="border-border/60 shadow-xs">
+        <CardHeader>
+          <CardTitle>Recent transactions</CardTitle>
+          <CardDescription>{error}</CardDescription>
+        </CardHeader>
+        {onRetry ? (
+          <CardContent className="pt-0">
+            <Button variant="outline" onClick={onRetry}>
+              Retry
+            </Button>
+          </CardContent>
+        ) : null}
+      </Card>
+    )
+  }
+
+  return (
+    <Card className="border-border/60 shadow-xs">
+      <CardHeader>
+        <CardTitle>Recent transactions</CardTitle>
+        <CardDescription>
+          The latest activity across your accounts.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        {data?.length ? (
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Transaction</TableHead>
+                <TableHead>Category</TableHead>
+                <TableHead>Account</TableHead>
+                <TableHead>Date</TableHead>
+                <TableHead className="text-right">Amount</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {data.map((transaction) => {
+                const isIncome = transaction.type === "income"
+
+                return (
+                  <TableRow key={transaction.id}>
+                    <TableCell>
+                      <div className="flex items-center gap-3">
+                        <span
+                          className={`flex size-9 items-center justify-center rounded-full border ${
+                            isIncome
+                              ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-600"
+                              : "border-rose-500/20 bg-rose-500/10 text-rose-600"
+                          }`}
+                        >
+                          {isIncome ? (
+                            <ArrowUpRightIcon className="size-4" />
+                          ) : (
+                            <ArrowDownRightIcon className="size-4" />
+                          )}
+                        </span>
+                        <div className="min-w-0">
+                          <p className="truncate font-medium">{transaction.title}</p>
+                          <p className="truncate text-xs text-muted-foreground">
+                            {transaction.note || transaction.category.name}
+                          </p>
+                        </div>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <Badge variant="outline">{transaction.category.name}</Badge>
+                    </TableCell>
+                    <TableCell>{transaction.account.name}</TableCell>
+                    <TableCell>{formatDate(transaction.transaction_date)}</TableCell>
+                    <TableCell className="text-right">
+                      <span
+                        className={
+                          isIncome
+                            ? "font-semibold text-emerald-600"
+                            : "font-semibold text-rose-600"
+                        }
+                      >
+                        {isIncome ? "+" : "-"}
+                        {formatCurrency(transaction.amount)}
+                      </span>
+                    </TableCell>
+                  </TableRow>
+                )
+              })}
+            </TableBody>
+          </Table>
+        ) : (
+          <div className="rounded-2xl border border-dashed px-6 py-10 text-center text-sm text-muted-foreground">
+            No transactions available yet.
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  )
+}

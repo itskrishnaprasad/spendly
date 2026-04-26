@@ -1,3 +1,4 @@
+export * from "@/types/dashboard"
 export * from "@/types/analytics"
 export * from "@/types/base"
 export * from "@/types/create"
