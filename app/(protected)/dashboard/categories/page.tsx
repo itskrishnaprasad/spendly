@@ -303,7 +303,7 @@ function CategoryCardActions({
 
 function CategorySkeletonCards() {
   return (
-    <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:gap-4 2xl:grid-cols-4">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:gap-4 2xl:grid-cols-4">
       {Array.from({ length: 4 }).map((_, index) => (
         <Card key={index}>
           <CardHeader className="space-y-3">
@@ -333,7 +333,7 @@ function CategoryCards({
   onCategoryChanged: () => void
 }) {
   return (
-    <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:gap-4 2xl:grid-cols-4">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:gap-4 2xl:grid-cols-4">
       {categories.map((category) => (
         <Card key={category.id} className="h-full">
           <CardHeader className="space-y-3 pb-3">
