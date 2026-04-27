@@ -18,6 +18,7 @@ type AccountBalancesProps = {
 const iconMap = {
   cash: WalletIcon,
   bank: LandmarkIcon,
+  wallet: WalletIcon,
   credit_card: Building2Icon,
   default: WalletIcon,
 } as const
