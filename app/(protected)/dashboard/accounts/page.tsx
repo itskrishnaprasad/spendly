@@ -107,14 +107,14 @@ type EditAccountFormValues = z.infer<typeof editAccountFormSchema>
 function getAccountIcon(type: AccountType) {
   switch (type) {
     case "bank":
-      return <LandmarkIcon className="size-4 text-sky-600" />
+      return <LandmarkIcon className="size-4 text-primary" />
     case "wallet":
-      return <WalletIcon className="size-4 text-violet-600" />
+      return <WalletIcon className="size-4 text-chart-2" />
     case "credit_card":
-      return <Building2Icon className="size-4 text-amber-600" />
+      return <Building2Icon className="size-4 text-chart-3" />
     case "cash":
     default:
-      return <PiggyBankIcon className="size-4 text-emerald-600" />
+      return <PiggyBankIcon className="size-4 text-chart-4" />
   }
 }
 

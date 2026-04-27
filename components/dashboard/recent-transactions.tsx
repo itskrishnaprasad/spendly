@@ -94,8 +94,8 @@ export function RecentTransactions({ data, loading, error }: RecentTransactionsP
                         <span
                           className={`flex size-9 items-center justify-center rounded-full border ${
                             isIncome
-                              ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-600"
-                              : "border-rose-500/20 bg-rose-500/10 text-rose-600"
+                              ? "border-primary/20 bg-primary/10 text-primary"
+                              : "border-destructive/20 bg-destructive/10 text-destructive"
                           }`}
                         >
                           {isIncome ? (
@@ -121,8 +121,8 @@ export function RecentTransactions({ data, loading, error }: RecentTransactionsP
                       <span
                         className={
                           isIncome
-                            ? "font-semibold text-emerald-600"
-                            : "font-semibold text-rose-600"
+                            ? "font-semibold text-primary"
+                            : "font-semibold text-destructive"
                         }
                       >
                         {isIncome ? "+" : "-"}

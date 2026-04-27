@@ -17,6 +17,7 @@ import {
   LayoutDashboardIcon,
   ArrowLeftRightIcon,
   TagsIcon,
+  WalletCardsIcon,
 } from "lucide-react"
 
 const data = {
@@ -45,6 +46,11 @@ const data = {
       title: "Transactions",
       url: "/dashboard/transactions",
       icon: <ArrowLeftRightIcon />,
+    },
+    {
+      title: "Budgets",
+      url: "/dashboard/budgets",
+      icon: <WalletCardsIcon />,
     },
   ],
 }

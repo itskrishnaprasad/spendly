@@ -1,6 +1,5 @@
 import type {
   Account,
-  Budget,
   Category,
   RecurringTransaction,
   Transaction,
@@ -9,11 +8,6 @@ import type {
 export interface TransactionWithRelations extends Transaction {
   account: Account
   category: Category
-}
-
-export interface BudgetWithRelations extends Budget {
-  account?: Account | null
-  category?: Category | null
 }
 
 export interface RecurringTransactionWithRelations extends RecurringTransaction {

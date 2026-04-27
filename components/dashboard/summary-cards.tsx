@@ -20,28 +20,28 @@ const cards = [
     title: "Total Balance",
     description: "Across all connected accounts",
     icon: WalletIcon,
-    accent: "text-sky-600 dark:text-sky-400",
+    accent: "text-primary",
   },
   {
     key: "total_income",
     title: "Total Income",
     description: "All income transactions",
     icon: ArrowUpRightIcon,
-    accent: "text-emerald-600 dark:text-emerald-400",
+    accent: "text-primary",
   },
   {
     key: "total_expense",
     title: "Total Expense",
     description: "All expense transactions",
     icon: ArrowDownRightIcon,
-    accent: "text-rose-600 dark:text-rose-400",
+    accent: "text-destructive",
   },
   {
     key: "savings",
     title: "Savings",
     description: "Income minus expense",
     icon: PiggyBankIcon,
-    accent: "text-violet-600 dark:text-violet-400",
+    accent: "text-chart-2",
   },
 ] as const
 

@@ -44,9 +44,9 @@ function formatDate(value: string | null) {
 
 function getTransactionIcon(type: TransactionType) {
   return type === "income" ? (
-    <span className="text-emerald-600">↑</span>
+    <span className="text-primary">↑</span>
   ) : (
-    <span className="text-rose-600">↓</span>
+    <span className="text-destructive">↓</span>
   )
 }
 
@@ -111,8 +111,8 @@ export function TransactionTable({
                   className={cn(
                     "font-medium",
                     transaction.type === "income"
-                      ? "text-emerald-600"
-                      : "text-rose-600"
+                      ? "text-primary"
+                      : "text-destructive"
                   )}
                 >
                   {transaction.type === "income" ? "+" : "-"}

@@ -344,9 +344,9 @@ function CategoryCards({
                   aria-hidden="true"
                 >
                   {category.type === "income" ? (
-                    <ArrowUpRightIcon className="size-4 text-emerald-600" />
+                    <ArrowUpRightIcon className="size-4 text-primary" />
                   ) : (
-                    <ArrowDownRightIcon className="size-4 text-rose-600" />
+                    <ArrowDownRightIcon className="size-4 text-destructive" />
                   )}
                 </span>
                 <span className="truncate">{category.name}</span>
