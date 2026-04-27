@@ -10,7 +10,7 @@ import {
   deleteRecurringTransaction,
   getRecurringTransactionById,
   updateRecurringTransaction,
-} from "@/utils/services/recurring-transaction"
+} from "@/utils/services/recurring-transaction.service"
 import {
   recurringTransactionIdSchema,
   updateRecurringTransactionSchema,

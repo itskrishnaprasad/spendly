@@ -1,7 +1,7 @@
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 
-import { AppSidebar } from "@/components/app-sidebar"
+import { AppSidebar } from "@/app/(protected)/_components/app-sidebar"
 import { DynamicBreadcrumb } from "@/components/dynamic-breadcrumb"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Separator } from "@/components/ui/separator"
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sidebar"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { createClient } from "@/utils/supabase/server"
+import { getProfile } from "@/utils/services/profile.service"
 
 export default async function ProtectedLayout({
   children,
@@ -29,10 +30,19 @@ export default async function ProtectedLayout({
     redirect("/sign-in")
   }
 
+  const profileResult = await getProfile(supabase, user.id)
+  const profile = profileResult.success ? profileResult.data : null
+
+  const sidebarUser = {
+    name: profile?.full_name || user.email?.split("@")[0] || "User",
+    email: profile?.email || user.email || "",
+    avatar: profile?.avatar_url || "",
+  }
+
   return (
     <TooltipProvider>
       <SidebarProvider>
-        <AppSidebar />
+        <AppSidebar user={sidebarUser} />
         <SidebarInset>
           <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
             <div className="flex flex-1 items-center gap-2 px-4">

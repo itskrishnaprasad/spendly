@@ -5,11 +5,11 @@ import { toast } from "sonner"
 
 import type { Account, Category } from "@/types/base"
 import type { BudgetProgress, BudgetWithRelations, CreateBudgetInput } from "@/types/budget"
-import { BudgetForm } from "@/components/budgets/budget-form"
-import { BudgetHeader } from "@/components/budgets/budget-header"
-import { BudgetList } from "@/components/budgets/budget-list"
-import { BudgetProgressSummary } from "@/components/budgets/budget-progress"
-import { DeleteBudgetDialog } from "@/components/budgets/delete-budget-dialog"
+import { BudgetForm } from "@/app/(protected)/dashboard/budgets/_components/budget-form"
+import { BudgetHeader } from "@/app/(protected)/dashboard/budgets/_components/budget-header"
+import { BudgetList } from "@/app/(protected)/dashboard/budgets/_components/budget-list"
+import { BudgetProgressSummary } from "@/app/(protected)/dashboard/budgets/_components/budget-progress"
+import { DeleteBudgetDialog } from "@/app/(protected)/dashboard/budgets/_components/delete-budget-dialog"
 
 type ApiSuccessResponse<T> = {
   success: true

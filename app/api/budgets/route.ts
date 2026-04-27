@@ -6,7 +6,7 @@ import {
   successResponse,
   validationErrorResponse,
 } from "@/utils/responses/api-response"
-import { createBudget, getBudgets } from "@/utils/services/budget"
+import { createBudget, getBudgets } from "@/utils/services/budget.service"
 import {
   budgetsQuerySchema,
   createBudgetSchema,

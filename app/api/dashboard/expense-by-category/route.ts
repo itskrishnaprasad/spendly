@@ -1,6 +1,6 @@
 import { requireAuthenticatedUser } from "@/utils/auth/require-authenticated-user"
 import { errorResponse, successResponse } from "@/utils/responses/api-response"
-import { getExpenseByCategory } from "@/utils/services/dashboard"
+import { getExpenseByCategory } from "@/utils/services/dashboard.service"
 
 export async function GET() {
   const auth = await requireAuthenticatedUser()

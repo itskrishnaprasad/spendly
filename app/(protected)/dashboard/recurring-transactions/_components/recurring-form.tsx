@@ -26,6 +26,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { DatePicker } from "@/components/ui/date-picker"
 import {
   Select,
   SelectContent,
@@ -324,7 +325,7 @@ export function RecurringForm({
                   <FormItem>
                     <FormLabel>Start Date</FormLabel>
                     <FormControl>
-                      <Input type="date" {...field} disabled={isSubmitting} />
+                      <DatePicker value={field.value} onChange={field.onChange} disabled={isSubmitting} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -338,8 +339,7 @@ export function RecurringForm({
                   <FormItem>
                     <FormLabel>End Date (Optional)</FormLabel>
                     <FormControl>
-                      <Input
-                        type="date"
+                      <DatePicker
                         value={field.value ?? ""}
                         onChange={field.onChange}
                         disabled={isSubmitting}

@@ -32,12 +32,12 @@ import {
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
 
-import { DeleteRecurringDialog } from "@/components/recurring-transactions/delete-recurring-dialog"
-import { RecurringForm } from "@/components/recurring-transactions/recurring-form"
-import { RecurringHeader } from "@/components/recurring-transactions/recurring-header"
-import { RecurringList } from "@/components/recurring-transactions/recurring-list"
-import { RecurringSummary } from "@/components/recurring-transactions/recurring-summary"
-import { UpcomingSchedule } from "@/components/recurring-transactions/upcoming-schedule"
+import { DeleteRecurringDialog } from "@/app/(protected)/dashboard/recurring-transactions/_components/delete-recurring-dialog"
+import { RecurringForm } from "@/app/(protected)/dashboard/recurring-transactions/_components/recurring-form"
+import { RecurringHeader } from "@/app/(protected)/dashboard/recurring-transactions/_components/recurring-header"
+import { RecurringList } from "@/app/(protected)/dashboard/recurring-transactions/_components/recurring-list"
+import { RecurringSummary } from "@/app/(protected)/dashboard/recurring-transactions/_components/recurring-summary"
+import { UpcomingSchedule } from "@/app/(protected)/dashboard/recurring-transactions/_components/upcoming-schedule"
 
 import { recurringTransactionQuerySchema } from "@/utils/validations/recurring-transaction"
 import type { CreateRecurringTransactionInput } from "@/utils/validations/recurring-transaction"

@@ -9,7 +9,7 @@ import {
 import {
   createRecurringTransaction,
   getRecurringTransactions,
-} from "@/utils/services/recurring-transaction"
+} from "@/utils/services/recurring-transaction.service"
 import {
   createRecurringTransactionSchema,
   recurringTransactionQuerySchema,

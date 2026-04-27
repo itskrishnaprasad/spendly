@@ -10,7 +10,7 @@ import {
 
 import type { Account, Category, Transaction } from "@/types/base"
 import type { TransactionType } from "@/types/enums"
-import { CreateTransactionDialog } from "@/components/create-transaction-dialog"
+import { CreateTransactionDialog } from "@/app/(protected)/dashboard/transactions/_components/create-transaction-dialog"
 import {
   EmptyState,
   EmptyStateDescription,
@@ -19,7 +19,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   transactionQuerySchema,
-} from "@/utils/validations/transactions"
+} from "@/utils/validations/transaction"
 
 import {
   TransactionFiltersPanel,

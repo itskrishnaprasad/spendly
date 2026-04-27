@@ -10,7 +10,7 @@ import {
   deleteBudget,
   getBudgetById,
   updateBudget,
-} from "@/utils/services/budget"
+} from "@/utils/services/budget.service"
 import { budgetIdSchema, updateBudgetSchema } from "@/utils/validations/budget"
 
 type RouteContext = {

@@ -14,7 +14,7 @@ import {
 import {
   transactionIdSchema,
   updateTransactionSchema,
-} from "@/utils/validations/transactions"
+} from "@/utils/validations/transaction"
 
 type RouteContext = {
   params: Promise<{ id: string }>

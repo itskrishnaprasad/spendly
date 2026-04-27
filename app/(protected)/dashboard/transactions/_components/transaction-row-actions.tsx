@@ -33,6 +33,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { DatePicker } from "@/components/ui/date-picker"
 import {
   Select,
   SelectContent,
@@ -40,7 +41,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { updateTransactionSchema } from "@/utils/validations/transactions"
+import { updateTransactionSchema } from "@/utils/validations/transaction"
 
 type ApiSuccessResponse<T> = {
   success: true
@@ -396,7 +397,7 @@ export function TransactionRowActions({
                     <FormItem>
                       <FormLabel>Date</FormLabel>
                       <FormControl>
-                        <Input type="date" {...field} disabled={isEditLoading} />
+                        <DatePicker value={field.value} onChange={field.onChange} disabled={isEditLoading} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

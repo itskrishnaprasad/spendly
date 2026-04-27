@@ -13,7 +13,7 @@ import {
 import {
   createTransactionSchema,
   transactionQuerySchema,
-} from "@/utils/validations/transactions"
+} from "@/utils/validations/transaction"
 
 export async function GET(request: NextRequest) {
   const auth = await requireAuthenticatedUser()

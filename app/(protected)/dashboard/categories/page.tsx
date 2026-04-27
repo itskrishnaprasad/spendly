@@ -17,7 +17,7 @@ import { toast } from "sonner"
 
 import type { Category } from "@/types/base"
 import type { TransactionType } from "@/types/enums"
-import { CreateCategoryDialog } from "@/components/create-category-dialog"
+import { CreateCategoryDialog } from "@/app/(protected)/dashboard/categories/_components/create-category-dialog"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {

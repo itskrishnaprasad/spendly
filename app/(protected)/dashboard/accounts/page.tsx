@@ -18,7 +18,7 @@ import { toast } from "sonner"
 
 import type { Account } from "@/types/base"
 import type { AccountType } from "@/types/enums"
-import { CreateAccountDialog } from "@/components/create-account-dialog"
+import { CreateAccountDialog } from "@/app/(protected)/dashboard/accounts/_components/create-account-dialog"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {

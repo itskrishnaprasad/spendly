@@ -29,6 +29,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { DatePicker } from "@/components/ui/date-picker"
 import {
   Select,
   SelectContent,
@@ -36,7 +37,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { createTransactionSchema } from "@/utils/validations/transactions"
+import { createTransactionSchema } from "@/utils/validations/transaction"
 
 const createTransactionFormSchema = z.object({
   account_id: z.string().uuid("Select an account."),
@@ -358,7 +359,7 @@ export function CreateTransactionDialog({
                   <FormItem>
                     <FormLabel>Date</FormLabel>
                     <FormControl>
-                      <Input type="date" {...field} disabled={isLoading || isOptionsLoading} />
+                      <DatePicker value={field.value} onChange={field.onChange} disabled={isLoading || isOptionsLoading} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

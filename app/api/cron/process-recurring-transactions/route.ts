@@ -2,7 +2,7 @@ import { NextRequest } from "next/server"
 import { createClient } from "@supabase/supabase-js"
 
 import { errorResponse, successResponse } from "@/utils/responses/api-response"
-import { processRecurringTransactions } from "@/utils/services/recurring-transaction"
+import { processRecurringTransactions } from "@/utils/services/recurring-transaction.service"
 
 function authorizeInternalRequest(request: NextRequest) {
   const configuredSecret =

@@ -1,6 +1,6 @@
 import { requireAuthenticatedUser } from "@/utils/auth/require-authenticated-user"
 import { errorResponse, successResponse } from "@/utils/responses/api-response"
-import { getRecentTransactions } from "@/utils/services/dashboard"
+import { getRecentTransactions } from "@/utils/services/dashboard.service"
 
 export async function GET() {
   const auth = await requireAuthenticatedUser()

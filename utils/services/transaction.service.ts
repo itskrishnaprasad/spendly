@@ -6,7 +6,7 @@ import type {
   CreateTransactionInput,
   TransactionQueryInput,
   UpdateTransactionInput,
-} from "@/utils/validations/transactions"
+} from "@/utils/validations/transaction"
 
 type ServiceError = {
   status: number
