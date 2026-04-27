@@ -258,7 +258,7 @@ async function ensureRecurringTransactionAccess(
 
   return {
     success: true,
-    data: data as RecurringTransactionWithRelations,
+    data: data as unknown as RecurringTransactionWithRelations,
   }
 }
 
@@ -297,7 +297,7 @@ export async function getRecurringTransactions(
 
   return {
     success: true,
-    data: (data ?? []) as RecurringTransactionWithRelations[],
+    data: (data ?? []) as unknown as RecurringTransactionWithRelations[],
   }
 }
 
@@ -368,7 +368,7 @@ export async function createRecurringTransaction(
 
   return {
     success: true,
-    data: data as RecurringTransactionWithRelations,
+    data: data as unknown as RecurringTransactionWithRelations,
   }
 }
 
@@ -473,7 +473,7 @@ export async function updateRecurringTransaction(
 
   return {
     success: true,
-    data: data as RecurringTransactionWithRelations,
+    data: data as unknown as RecurringTransactionWithRelations,
   }
 }
 

@@ -237,7 +237,7 @@ export async function getExpenseByCategory(
     DashboardExpenseCategoryBreakdown & { sortTotal: number }
   >()
 
-  for (const row of (data ?? []) as ExpenseByCategoryRow[]) {
+  for (const row of (data ?? []) as unknown as ExpenseByCategoryRow[]) {
     const category = row.category
 
     if (!category) {
@@ -310,7 +310,7 @@ export async function getRecentTransactions(
   return {
     success: true,
     data: (data ?? []).map((row) =>
-      mapRecentTransaction(row as DashboardRecentTransaction)
+      mapRecentTransaction(row as unknown as DashboardRecentTransaction)
     ),
   }
 }
