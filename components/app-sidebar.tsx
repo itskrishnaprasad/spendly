@@ -18,6 +18,7 @@ import {
   ArrowLeftRightIcon,
   TagsIcon,
   WalletCardsIcon,
+  RepeatIcon,
 } from "lucide-react"
 
 const data = {
@@ -51,6 +52,11 @@ const data = {
       title: "Budgets",
       url: "/dashboard/budgets",
       icon: <WalletCardsIcon />,
+    },
+    {
+      title: "Recurring",
+      url: "/dashboard/recurring-transactions",
+      icon: <RepeatIcon />,
     },
   ],
 }
