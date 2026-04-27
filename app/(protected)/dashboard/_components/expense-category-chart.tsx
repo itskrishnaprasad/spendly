@@ -17,6 +17,7 @@ type ExpenseCategoryChartProps = {
   data: DashboardExpenseCategoryBreakdown[] | null
   loading: boolean
   error: string | null
+  onRetry?: () => void
 }
 
 const FALLBACK_COLORS = [
@@ -45,6 +46,7 @@ export function ExpenseCategoryChart({
   data,
   loading,
   error,
+  onRetry,
 }: ExpenseCategoryChartProps) {
   if (loading) {
     return <ExpenseCategorySkeleton />

@@ -58,6 +58,7 @@ export function MonthlyOverviewChart({
   data,
   loading,
   error,
+  onRetry,
 }: MonthlyOverviewChartProps) {
   if (loading) {
     return <MonthlyOverviewSkeleton />

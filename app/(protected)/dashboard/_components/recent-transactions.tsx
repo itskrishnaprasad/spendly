@@ -20,6 +20,7 @@ type RecentTransactionsProps = {
   data: DashboardRecentTransaction[] | null
   loading: boolean
   error: string | null
+  onRetry?: () => void
 }
 
 function RecentTransactionsSkeleton() {
@@ -40,7 +41,7 @@ function RecentTransactionsSkeleton() {
   )
 }
 
-export function RecentTransactions({ data, loading, error }: RecentTransactionsProps) {
+export function RecentTransactions({ data, loading, error, onRetry }: RecentTransactionsProps) {
   if (loading) {
     return <RecentTransactionsSkeleton />
   }
