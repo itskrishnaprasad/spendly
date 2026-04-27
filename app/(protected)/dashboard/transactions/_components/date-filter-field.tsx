@@ -1,6 +1,5 @@
 "use client"
 
-import type { ComponentProps } from "react"
 import { useState } from "react"
 import { format, parseISO } from "date-fns"
 import { CalendarIcon } from "lucide-react"
@@ -29,7 +28,7 @@ export function DateFilterField({
   const [open, setOpen] = useState(false)
   const selectedDate = value ? parseISO(value) : undefined
 
-  const handleSelect: ComponentProps<typeof Calendar>["onSelect"] = (date) => {
+  const handleSelect = (date: Date | undefined) => {
     if (!date) {
       return
     }
