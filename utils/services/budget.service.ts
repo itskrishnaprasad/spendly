@@ -322,7 +322,7 @@ async function ensureBudgetAccess(
 
   return {
     success: true,
-    data: data as BudgetWithRelations,
+    data: data as unknown as BudgetWithRelations,
   }
 }
 
@@ -365,7 +365,7 @@ export async function getBudgets(
 
   return {
     success: true,
-    data: (data ?? []) as BudgetWithRelations[],
+    data: (data ?? []) as unknown as BudgetWithRelations[],
   }
 }
 
@@ -432,7 +432,7 @@ export async function createBudget(
 
   return {
     success: true,
-    data: data as BudgetWithRelations,
+    data: data as unknown as BudgetWithRelations,
   }
 }
 
@@ -524,7 +524,7 @@ export async function updateBudget(
 
   return {
     success: true,
-    data: data as BudgetWithRelations,
+    data: data as unknown as BudgetWithRelations,
   }
 }
 
@@ -590,7 +590,7 @@ export async function getBudgetProgress(
     }
   }
 
-  const budgets = (budgetsResponse.data ?? []) as BudgetWithRelations[]
+  const budgets = (budgetsResponse.data ?? []) as unknown as BudgetWithRelations[]
 
   if (!budgets.length) {
     return {

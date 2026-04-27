@@ -2,7 +2,6 @@ import type { Account, Budget as BaseBudget, Category } from "@/types/base"
 import type { BudgetPeriod } from "@/types/enums"
 import type { ISODateString, UUID } from "@/types/primitives"
 
-export type Budget = BaseBudget
 
 export interface CreateBudgetInput {
   category_id?: UUID | null
@@ -28,7 +27,7 @@ export interface UpdateBudgetInput {
   is_active?: boolean
 }
 
-export interface BudgetWithRelations extends Budget {
+export interface BudgetWithRelations extends BaseBudget {
   category: Pick<Category, "id" | "name" | "color" | "icon" | "type"> | null
   account: Pick<Account, "id" | "name" | "type" | "color" | "icon"> | null
 }
