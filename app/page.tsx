@@ -1,18 +1,30 @@
-import Link from "next/link"
+import type { Metadata } from "next"
 
-import { Button } from "@/components/ui/button"
+import { LandingNavbar } from "@/app/_components/landing-navbar"
+import { LandingHero } from "@/app/_components/landing-hero"
+import { DashboardPreview } from "@/app/_components/dashboard-preview"
 
-export default function Page() {
+export const metadata: Metadata = {
+  title: "Spendly — Modern Personal Finance",
+  description:
+    "Manage your income, expenses, budgets, and recurring transactions with clarity and automation. The modern personal finance dashboard for professionals.",
+}
+
+export default function HomePage() {
   return (
-    <main className="flex min-h-svh items-center justify-center p-6">
-      <div className="flex items-center gap-3">
-        <Button asChild>
-          <Link href="/sign-in">Sign in</Link>
-        </Button>
-        <Button asChild variant="outline">
-          <Link href="/sign-up">Sign up</Link>
-        </Button>
-      </div>
-    </main>
+    <div className="relative flex min-h-svh flex-col overflow-x-hidden bg-background">
+      {/* Subtle radial grid overlay — decorative */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--primary)/0.08),transparent)]"
+      />
+
+      <LandingNavbar />
+
+      <main id="main-content" className="flex flex-1 flex-col">
+        <LandingHero />
+        <DashboardPreview />
+      </main>
+    </div>
   )
 }
