@@ -45,7 +45,7 @@ const createTransactionFormSchema = z.object({
   type: z.enum(["income", "expense"] as const),
   amount: z.number().finite().positive("Amount must be greater than 0."),
   title: z.string().trim().min(1, "Title is required."),
-  note: z.string().trim().optional().default(""),
+  note: z.string().trim().default(""),
   transaction_date: z.string().min(1, "Date is required."),
 })
 
