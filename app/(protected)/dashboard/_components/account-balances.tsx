@@ -13,6 +13,7 @@ type AccountBalancesProps = {
   data: Account[] | null
   loading: boolean
   error: string | null
+  onRetry?: () => void
 }
 
 const iconMap = {
@@ -43,7 +44,7 @@ function getAccountIcon(type: Account["type"]) {
   return iconMap[type] ?? iconMap.default
 }
 
-export function AccountBalances({ data, loading, error }: AccountBalancesProps) {
+export function AccountBalances({ data, loading, error, onRetry }: AccountBalancesProps) {
   if (loading) {
     return <AccountBalancesSkeleton />
   }
