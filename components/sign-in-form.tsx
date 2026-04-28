@@ -1,11 +1,13 @@
 "use client"
 
+import * as React from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+import { Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -51,6 +53,9 @@ export function SignInForm({
     },
   })
 
+  const [isPending, startTransition] = React.useTransition()
+  const [isNavigating, setIsNavigating] = React.useState(false)
+
   const onSubmit = async (values: SignInFormValues) => {
     const supabase = createClient()
     const { error } = await supabase.auth.signInWithPassword(values)
@@ -60,9 +65,14 @@ export function SignInForm({
       return
     }
 
-    router.replace("/dashboard")
-    router.refresh()
+    setIsNavigating(true)
+    startTransition(() => {
+      router.replace("/dashboard")
+      router.refresh()
+    })
   }
+
+  const isLoading = isSubmitting || isNavigating || isPending
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -109,10 +119,17 @@ export function SignInForm({
               </Field>
               <Field>
                 <FieldError errors={[errors.root]} />
-                <Button type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? "Signing in..." : "Login"}
+                <Button type="submit" disabled={isLoading}>
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Signing in...
+                    </>
+                  ) : (
+                    "Login"
+                  )}
                 </Button>
-                <Button variant="outline" type="button" disabled={isSubmitting}>
+                <Button variant="outline" type="button" disabled={isLoading}>
                   Login with Google
                 </Button>
                 <FieldDescription className="text-center">
