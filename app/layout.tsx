@@ -4,8 +4,9 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/next"
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'})
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider>
+          <Analytics />
           {children}
           <Toaster position="top-center" />
         </ThemeProvider>
