@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import {
   ChevronsUpDownIcon,
-  BadgeCheckIcon,
-  SettingsIcon,
   LogOutIcon,
   Loader2Icon,
 } from "lucide-react"
@@ -110,17 +108,6 @@ export function NavUser({
                 </div>
               </div>
             </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem onClick={() => router.push("/dashboard/accounts")}>
-                <BadgeCheckIcon />
-                Account
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <SettingsIcon />
-                Settings
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout} disabled={isLoggingOut}>
               {isLoggingOut ? (
