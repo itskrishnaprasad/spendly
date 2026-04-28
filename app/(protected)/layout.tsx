@@ -57,7 +57,7 @@ export default async function ProtectedLayout({
               <ThemeToggle />
             </div>
           </header>
-          <div className="flex flex-1 flex-col gap-4 p-4 pt-0">{children}</div>
+          <div className="flex flex-1 flex-col gap-6 p-4 md:p-6 lg:p-8">{children}</div>
         </SidebarInset>
       </SidebarProvider>
     </TooltipProvider>

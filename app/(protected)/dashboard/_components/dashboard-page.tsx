@@ -148,8 +148,8 @@ export function DashboardPage() {
   )
 
   return (
-    <main className="relative flex w-full flex-col gap-6 overflow-hidden pb-6">
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 overflow-hidden">
+    <main className="relative flex w-full flex-col gap-6">
+      <div className="pointer-events-none absolute inset-x-0 -top-6 -z-10 h-64 overflow-hidden">
         <div className="absolute -left-20 -top-24 size-80 rounded-full bg-primary/12 blur-3xl" />
         <div className="absolute right-0 -top-20 size-72 rounded-full bg-secondary blur-3xl" />
       </div>
